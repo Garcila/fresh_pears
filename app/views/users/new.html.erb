@@ -1,0 +1,38 @@
+<h1>Sign up</h1>
+
+<%= form_for @user do |f| %>
+	<% if @user.errors.any? %>
+		<div>
+			<%= pluralize(@user.errors.count, "error") %> prefented this user from being added:
+			<ul>
+				<% @user.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div>
+		<%= f.label :email %><br>
+		<%= f.text_field :email, placeholder: "type your email" %>
+	</div>
+	<div>
+		<%= f.label :firstname %><br>
+		<%= f.text_field :firstname, placeholder: "first name" %>
+	</div>
+	<div>
+		<%= f.label :lastname %><br>
+		<%= f.text_field :lastname, placeholder: "lastname" %>
+	</div>
+	<div>
+		<%= f.label :password %><br>
+		<%= f.password_field :password, placeholder: "password" %>
+	</div>
+	<div>
+		<%= f.label :password_confirmation %><br>
+		<%= f.password_field :password_confirmation, placeholder: "type again your password" %>
+	</div>
+	<div>
+		<%= f.submit "Submit" %>
+	</div>
+<% end %>
+
