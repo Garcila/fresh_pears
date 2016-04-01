@@ -10,6 +10,10 @@ class Movie < ActiveRecord::Base
 	validates :release_date, presence: true
 	validate :release_date_is_in_the_past
 
+	def review_average
+		reviews.sum(:rating_out_of_ten)/(reviews.size>1 ? reviews.size : 1)
+	end
+
 	protected
 
 	def release_date_is_in_the_past
