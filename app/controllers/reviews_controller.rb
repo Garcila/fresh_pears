@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+
+  before_filter :restrict_access
+  
   def new
   	@movie = Movie.find(params[:movie_id])
   	@review = @movie.reviews.build
